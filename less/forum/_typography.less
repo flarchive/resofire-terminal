@@ -1,0 +1,57 @@
+// ── Typography — Desktop only ─────────────────────────────────
+
+@media @tablet-up {
+    .Button,
+    .FormControl,
+    .Alert { font-family: 'DM Mono', monospace; }
+
+    .DiscussionHero .DiscussionHero-title {
+        font-family: 'DM Mono', monospace;
+        font-size: 18px;
+        font-weight: 400;
+        color: @term-green;
+        letter-spacing: .04em;
+
+        &::before { content: '# '; color: @term-green-dim; }
+    }
+
+    .DiscussionHero.Hero {
+        background: @term-surface;
+        border-bottom: 1px solid @term-border;
+    }
+
+    .TagLabel {
+        border-radius: 1px;
+        font-family: 'DM Mono', monospace;
+        font-size: 10px;
+        letter-spacing: .02em;
+    }
+
+    // In the DiscussionHero, tags extension overrides .colored to use
+    // --contrast-color (white/light) as the background, which looks wrong
+    // on our dark theme. Force it back to a dark bg with coloured text.
+    .DiscussionHero .TagsLabel .TagLabel.colored,
+    .DiscussionHero .TagsLabel .TagLabel--colored {
+        background-color: @term-raised !important;
+        --tag-color: var(--tag-bg) !important;
+    }
+
+    .DiscussionHero .TagsLabel .TagLabel.colored .TagLabel-text,
+    .DiscussionHero .TagsLabel .TagLabel--colored .TagLabel-text {
+        color: var(--tag-bg) !important;
+    }
+
+    .Alert {
+        background: @term-raised;
+        border: 1px solid @term-border;
+        border-radius: @border-radius;
+        color: @term-text;
+        font-size: 12px;
+        box-shadow: none;
+    }
+
+    .Alert--success { border-color: @term-green-dim; color: @term-green-dim; }
+    .Alert--error   { border-color: #5A1A1A; color: #FF6B6B; }
+
+    .AlertManager { background: transparent; }
+}

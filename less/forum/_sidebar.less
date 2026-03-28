@@ -1,0 +1,219 @@
+// ── Sidebar — Desktop only ────────────────────────────────────
+
+@media @desktop-up {
+    .IndexPage-nav.sideNav {
+        background: @term-surface;
+        border-right: 1px solid @term-border;
+    }
+
+    // Nav items — core: .sideNav .Dropdown--select .Dropdown-menu > li > a
+    .sideNav .Dropdown--select .Dropdown-menu > li > a {
+        font-family: 'DM Mono', monospace;
+        font-size: 14px;
+        color: @term-text-mid;
+        padding: 8px 16px;
+        border-radius: 0;
+        letter-spacing: .02em;
+
+        &::before {
+            content: '$ ';
+            color: @term-text-dim;
+            font-family: 'DM Mono', monospace;
+        }
+
+        .Button-icon { display: none; }
+
+        &:hover {
+            background: none;
+            color: @term-text;
+            &::before { color: @term-green-dim; }
+        }
+    }
+
+    // Active nav item
+    .sideNav .Dropdown--select .Dropdown-menu > li.active > a {
+        background: none;
+        color: @term-green;
+        font-weight: 500;
+        &::before { color: @term-green-dim; }
+    }
+
+    // ── Tag tiles ────────────────────────────────────────────
+    .term-tag-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 4px;
+        padding: 8px 12px 12px;
+    }
+
+    .term-tag-tile {
+        border-radius: @border-radius;
+        padding: 9px 9px 7px;
+        cursor: pointer;
+        text-decoration: none;
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+        position: relative;
+        overflow: hidden;
+        background: @term-raised;
+        border: 1px solid @term-border;
+        transition: border-color .15s;
+
+        // Coloured top bar using the tag's --tile-color
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 2px;
+            background: var(--tile-color, @term-green);
+        }
+
+        &:hover {
+            border-color: var(--tile-color, @term-green);
+            text-decoration: none;
+        }
+
+        &.active {
+            border-color: var(--tile-color, @term-green);
+        }
+    }
+
+    .term-tag-tile-icon {
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        font-size: 12px;
+        opacity: .3;
+        color: var(--tile-color, @term-green);
+    }
+
+    .term-tag-tile-name {
+        font-family: 'DM Mono', monospace;
+        font-size: 13px;
+        font-weight: 500;
+        line-height: 1.2;
+        color: var(--tile-color, @term-green);
+        margin-top: 4px;
+    }
+
+    .term-tag-tile-count {
+        font-family: 'DM Mono', monospace;
+        font-size: 11px;
+        color: @term-text-dim;
+    }
+}
+
+// ── Page--vertical (TagsPage on desktop) ─────────────────────
+// When Page--vertical is active, sideNav becomes horizontal.
+// Our tile grid makes no sense in that layout — hide it entirely.
+// The Tags page has its own full tag grid in the content area anyway.
+@media @desktop-up {
+    .Page--vertical .term-tag-grid {
+        display: none;
+    }
+}
+
+// ── Tablet: horizontal nav ───────────────────────────────────
+// Layout: [>] [column: icon / label] — separator left, icon+text stacked right
+
+@media @tablet {
+    // Core nav links
+    .sideNav .Dropdown--select .Dropdown-menu > li > a {
+        display: inline-flex;
+        flex-direction: row;
+        align-items: flex-start;
+        padding: 0;
+        gap: 6px;
+        text-align: center;
+
+        // > to the left of everything
+        &::before {
+            content: '>';
+            color: @term-text-dim;
+            font-family: 'DM Mono', monospace;
+            font-size: 13px;
+            line-height: 1.2;
+            flex-shrink: 0;
+        }
+
+        // Icon and label stack vertically
+        .Button-icon {
+            display: block;
+            font-size: 16px;
+            line-height: 1.2;
+        }
+
+        .Button-label {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+
+    // Tag tiles — same layout
+    .term-tag-grid { display: inline; }
+
+    .term-tag-tile {
+        display: inline-flex;
+        flex-direction: row;
+        align-items: flex-start;
+        vertical-align: top;
+        margin: 0 20px 0 0;
+        gap: 6px;
+        text-align: center;
+
+        background: none;
+        border: none;
+        border-radius: 0;
+        padding: 0;
+        overflow: visible;
+        min-height: 0;
+
+        // > to the left
+        &::before {
+            content: '>';
+            color: @term-text-dim;
+            font-family: 'DM Mono', monospace;
+            font-size: 13px;
+            line-height: 1.2;
+            flex-shrink: 0;
+        }
+
+        // Icon on top, coloured by tag colour
+        .term-tag-tile-icon {
+            display: block;
+            position: static;
+            font-size: 16px;
+            opacity: 1;
+            color: var(--tile-color, @term-text-mid);
+            width: auto;
+            height: auto;
+            top: auto;
+            right: auto;
+            line-height: 1.2;
+        }
+
+        // Name below icon, coloured by tag colour, no extra prefix
+        .term-tag-tile-name {
+            font-family: 'DM Mono', monospace;
+            font-size: 14px;
+            font-weight: 400;
+            color: var(--tile-color, @term-text-mid);
+            margin-top: 0;
+            display: block;
+
+            &::before { content: none; }
+        }
+
+        .term-tag-tile-count { display: none; }
+
+        &:hover {
+            .term-tag-tile-name,
+            .term-tag-tile-icon { opacity: .75; }
+        }
+
+        &.active .term-tag-tile-name { font-weight: 700; }
+    }
+}
+
