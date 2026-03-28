@@ -1,0 +1,128 @@
+// ── Composer — Desktop only ───────────────────────────────────
+
+@media @tablet-up {
+    .Composer {
+        background: @term-surface;
+        border-radius: 0;
+        box-shadow: none;
+        border-top: 1px solid @term-green !important;
+
+        &.active, &.fullScreen { background: @term-surface; box-shadow: none !important; }
+        &.active:not(.fullScreen) { box-shadow: none !important; }
+    }
+
+    .Composer-handle {
+        cursor: ns-resize;
+
+        &::after {
+            content: '── drag to resize ──';
+            display: block;
+            text-align: center;
+            font-family: 'DM Mono', monospace;
+            font-size: 9px;
+            color: @term-text-dim;
+            letter-spacing: .06em;
+            padding: 2px 0;
+        }
+    }
+
+    .Composer-content { padding: 12px 20px 14px; }
+
+    .ComposerBody-header {
+        border-bottom: 1px solid @term-border;
+        margin-bottom: 8px;
+        padding-bottom: 8px;
+
+        h3 {
+            color: @term-text-mid;
+            font-family: 'DM Mono', monospace;
+
+            &::before {
+                content: 'title: ';
+                font-size: 11px;
+                color: @term-green-dim;
+                font-family: 'DM Mono', monospace;
+            }
+        }
+
+        .DiscussionComposer-title {
+            color: @term-text;
+            font-family: 'DM Mono', monospace;
+            font-size: 13px;
+            background: transparent;
+            border: none;
+            box-shadow: none;
+
+            &::placeholder { color: @term-text-dim; }
+            &:focus { background: transparent; border-color: transparent; box-shadow: none; }
+        }
+    }
+
+    .TextEditor .TextEditor-editor {
+        background: transparent;
+        color: @term-text;
+        font-family: 'DM Mono', monospace;
+        font-size: 13px;
+        line-height: 1.8;
+        min-height: 80px;
+        caret-color: @term-green;
+        border: none;
+        box-shadow: none;
+
+        &:focus { box-shadow: none; }
+    }
+
+    .TextEditor-controls {
+        border-top: 1px solid @term-border;
+        padding-top: 8px;
+        margin-top: 4px;
+
+        .Button {
+            background: transparent;
+            border: 1px solid @term-border;
+            border-radius: @border-radius;
+            color: @term-text-dim;
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+            padding: 2px 7px;
+            box-shadow: none;
+
+            &:hover {
+                border-color: @term-green-dim;
+                color: @term-text;
+                background: transparent;
+                box-shadow: none;
+            }
+        }
+
+        .App-primaryControl .Button--primary {
+            background: @term-green !important;
+            color: @term-bg !important;
+            border-color: @term-green !important;
+            font-family: 'DM Mono', monospace !important;
+            font-weight: 500 !important;
+            padding: 3px 14px !important;
+            box-shadow: none !important;
+
+            &:hover {
+                background: mix(white, @term-green, 15%) !important;
+                box-shadow: none !important;
+            }
+        }
+    }
+
+    .Composer-controls .Button {
+        background: transparent;
+        border: 1px solid transparent;
+        color: @term-text-dim;
+        font-size: 11px;
+        padding: 2px 6px;
+
+        &:hover {
+            border-color: @term-border;
+            color: @term-text;
+            background: transparent;
+            box-shadow: none;
+        }
+    }
+}
