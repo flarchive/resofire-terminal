@@ -1,0 +1,191 @@
+// ── Sidebar — Desktop only ────────────────────────────────────
+
+@media @desktop-up {
+    .IndexPage-nav.sideNav {
+        background: @term-surface;
+        border-right: 1px solid @term-border;
+    }
+
+    // Nav items — core: .sideNav .Dropdown--select .Dropdown-menu > li > a
+    .sideNav .Dropdown--select .Dropdown-menu > li > a {
+        font-family: 'DM Mono', monospace;
+        font-size: 14px;
+        color: @term-text-mid;
+        padding: 8px 16px;
+        border-radius: 0;
+        letter-spacing: .02em;
+
+        &::before {
+            content: '$ ';
+            color: @term-text-dim;
+            font-family: 'DM Mono', monospace;
+        }
+
+        .Button-icon { display: none; }
+
+        &:hover {
+            background: none;
+            color: @term-text;
+            &::before { color: @term-green-dim; }
+        }
+    }
+
+    // Active nav item
+    .sideNav .Dropdown--select .Dropdown-menu > li.active > a {
+        background: none;
+        color: @term-green;
+        font-weight: 500;
+        &::before { color: @term-green-dim; }
+    }
+
+    // ── Tag tiles ────────────────────────────────────────────
+    .term-tag-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 4px;
+        padding: 8px 12px 12px;
+    }
+
+    .term-tag-tile {
+        border-radius: @border-radius;
+        padding: 9px 9px 7px;
+        cursor: pointer;
+        text-decoration: none;
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+        position: relative;
+        overflow: hidden;
+        background: @term-raised;
+        border: 1px solid @term-border;
+        transition: border-color .15s;
+
+        // Coloured top bar using the tag's --tile-color
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 2px;
+            background: var(--tile-color, @term-green);
+        }
+
+        &:hover {
+            border-color: var(--tile-color, @term-green);
+            text-decoration: none;
+        }
+
+        &.active {
+            border-color: var(--tile-color, @term-green);
+        }
+    }
+
+    .term-tag-tile-icon {
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        font-size: 12px;
+        opacity: .3;
+        color: var(--tile-color, @term-green);
+    }
+
+    .term-tag-tile-name {
+        font-family: 'DM Mono', monospace;
+        font-size: 13px;
+        font-weight: 500;
+        line-height: 1.2;
+        color: var(--tile-color, @term-green);
+        margin-top: 4px;
+    }
+
+    .term-tag-tile-count {
+        font-family: 'DM Mono', monospace;
+        font-size: 11px;
+        color: @term-text-dim;
+    }
+}
+
+// ── Page--vertical (TagsPage on desktop) ─────────────────────
+// When Page--vertical is active, sideNav becomes horizontal.
+// Our tile grid makes no sense in that layout — hide it entirely.
+// The Tags page has its own full tag grid in the content area anyway.
+@media @desktop-up {
+    .Page--vertical .term-tag-grid {
+        display: none;
+    }
+}
+
+// ── Tablet: horizontal nav — tag tiles match other nav links exactly ──
+// sideNav--horizontal makes each navItem li inline-block.
+// Our term-tag-grid is one li containing multiple tiles — we unwrap it
+// so each tile looks identical to Leaderboard, Following, Tags etc.
+
+@media @tablet {
+    // Unwrap the grid — make it a transparent inline container
+    .term-tag-grid {
+        display: inline;
+    }
+
+    // Each tile becomes a horizontal flex link matching other nav <li> > <a> items
+    .term-tag-tile {
+        // Matches inline-block li in sideNav--horizontal
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        vertical-align: top;
+        margin: 0 20px 0 0;
+
+        // Reset all tile card styles
+        background: none;
+        border: none;
+        border-radius: 0;
+        padding: 8px 0 8px 0;
+        overflow: visible;
+        flex-direction: row;
+        min-height: 0;
+
+        // Remove the coloured top bar
+        &::before { display: none; }
+
+        // Icon — matches .Button-icon sizing in nav links
+        .term-tag-tile-icon {
+            display: inline-block;
+            position: static;
+            font-size: 15px;
+            opacity: 1;
+            color: @term-text-mid;
+            width: auto;
+            height: auto;
+            top: auto;
+            right: auto;
+        }
+
+        // Name — matches .Button-label in nav links, with $ prefix
+        .term-tag-tile-name {
+            font-family: 'DM Mono', monospace;
+            font-size: 14px;
+            font-weight: 400;
+            color: @term-text-mid;
+            margin-top: 0;
+
+            &::before {
+                content: '$ ';
+                color: @term-text-dim;
+            }
+        }
+
+        // No room for count in horizontal strip
+        .term-tag-tile-count { display: none; }
+
+        &:hover {
+            .term-tag-tile-name { color: @term-text; }
+            .term-tag-tile-name::before { color: @term-green-dim; }
+            .term-tag-tile-icon { color: @term-text; }
+        }
+
+        &.active {
+            .term-tag-tile-name { color: @term-green; }
+            .term-tag-tile-name::before { color: @term-green-dim; }
+            .term-tag-tile-icon { color: @term-green; }
+        }
+    }
+}

@@ -1,0 +1,81 @@
+// ── Dropdowns — Desktop only ──────────────────────────────────
+
+@media @tablet-up {
+    .Dropdown-menu {
+        background: @term-raised;
+        border: 1px solid @term-border;
+        border-radius: @border-radius;
+        box-shadow: none;
+        padding: 4px 0;
+
+        > li > a,
+        > li > button {
+            font-family: 'DM Mono', monospace;
+            font-size: 12px;
+            color: @term-text-mid;
+            padding: 6px 14px;
+            border-radius: 0;
+            display: block;
+
+            &::before { content: '> '; color: @term-text-dim; }
+
+            &:hover {
+                background: @term-surface;
+                color: @term-text;
+                text-decoration: none;
+                &::before { color: @term-green-dim; }
+            }
+        }
+
+        .Dropdown-header {
+            font-family: 'DM Mono', monospace;
+            font-size: 10px;
+            color: @term-text-dim;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            padding: 6px 14px 2px;
+        }
+
+        .Dropdown-separator { background: @term-border; margin: 3px 0; }
+    }
+
+    .HeaderList {
+        background: @term-raised;
+        border: 1px solid @term-border;
+        border-radius: @border-radius;
+        box-shadow: none;
+    }
+
+    .HeaderList-header,
+    .HeaderList-footer {
+        background: @term-surface;
+        border-bottom: 1px solid @term-border;
+        padding: 8px 12px;
+
+        h4 {
+            font-family: 'DM Mono', monospace;
+            font-size: 10px;
+            color: @term-text-mid;
+            letter-spacing: .06em;
+            text-transform: uppercase;
+        }
+
+        .Button--link {
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+            color: @term-text-dim;
+            &:hover { color: @term-text-mid; }
+        }
+    }
+
+    .HeaderList-footer {
+        border-top: 1px solid @term-border;
+        border-bottom: none;
+    }
+
+    .NotificationList .placeholder {
+        font-family: 'DM Mono', monospace;
+        font-size: 12px;
+        color: @term-text-mid;
+    }
+}
