@@ -1,0 +1,270 @@
+// ── Discussion List — Desktop only ───────────────────────────
+
+@media @tablet-up {
+    // Hide the mobile tag strip on desktop — it was injected by IndexPage.contentItems
+    // but we've removed it from JS entirely so this is just a safety fallback
+    .term-tag-strip { display: none; }
+
+    .IndexPage-toolbar {
+        background: @term-surface;
+        border-bottom: 1px solid @term-border;
+        padding: 7px 16px;
+
+        .Button {
+            background: transparent;
+            border: 1px solid @term-border;
+            border-radius: @border-radius;
+            color: @term-text-mid;
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+            padding: 2px 8px;
+            box-shadow: none;
+
+            &:hover {
+                border-color: @term-green-dim;
+                color: @term-text;
+                background: transparent;
+                box-shadow: none;
+            }
+        }
+
+        .Dropdown-toggle.Button {
+            border-color: @term-green-dim;
+            color: @term-text;
+        }
+    }
+
+    .DiscussionList { background: @term-bg; }
+
+    .DiscussionListItem {
+        background: @term-bg;
+        border: none;
+        border-bottom: 1px solid @term-border;
+        border-radius: 0;
+        margin: 0;
+        padding: 0;
+        position: relative;
+        overflow: hidden;
+
+        // Left accent stripe
+        &::before {
+            content: '';
+            position: absolute;
+            left: 0; top: 0; bottom: 0;
+            width: 2px;
+            background: var(--term-tag-color, @term-green-dim);
+        }
+
+        &:hover {
+            background: @term-surface;
+            .DiscussionListItem-title { color: @term-green; }
+        }
+    }
+
+    .DiscussionListItem-content {
+        padding: 11px 16px 11px 18px;
+        gap: 12px;
+    }
+
+    .DiscussionListItem-author-avatar .Avatar {
+        border-radius: @border-radius;
+        background: @term-surface;
+        border: 1px solid @term-border;
+        width: 30px;
+        height: 30px;
+    }
+
+    .DiscussionListItem-title {
+        font-family: 'DM Mono', monospace;
+        font-size: 17px;
+        font-weight: 400;
+        color: @term-text;
+        margin-bottom: 4px;
+        line-height: 1.4;
+    }
+
+    .DiscussionListItem-info {
+        font-family: 'DM Mono', monospace;
+        font-size: 12px;
+        color: @term-text-mid;
+    }
+
+    .DiscussionListItem-info .TagLabel {
+        border-radius: 1px;
+        font-size: 11px;
+        font-weight: 500;
+        padding: 1px 6px;
+        letter-spacing: .02em;
+    }
+
+    // .unread is on .DiscussionListItem-content
+    .DiscussionListItem-content.unread {
+        .DiscussionListItem-title {
+            color: @term-text;
+            font-weight: 500;
+        }
+    }
+
+    .DiscussionListItem-stats-item {
+        font-family: 'DM Mono', monospace;
+        font-size: 13px;
+        color: @term-text-mid;
+    }
+
+    .DiscussionListItem-content.unread .DiscussionListItem-stats-item {
+        color: @term-green;
+    }
+
+    .DiscussionListItem-controls .Button {
+        color: @term-text-dim;
+        &:hover { color: @term-text; }
+    }
+}
+
+// ── Mobile discussion list — Phone only ───────────────────────
+
+@media @phone {
+    .DiscussionList {
+        // Full width, no margin
+        margin: 0;
+    }
+
+    .DiscussionListItem {
+        // Keep the left accent stripe
+        &::before {
+            width: 2px;
+        }
+    }
+
+    .DiscussionListItem-content {
+        padding: 10px 12px 10px 16px;
+    }
+
+    .DiscussionListItem-title {
+        font-family: 'DM Mono', monospace;
+        font-size: 16px;
+        color: @term-text;
+    }
+
+    .DiscussionListItem-info {
+        font-family: 'DM Mono', monospace;
+        font-size: 11px;
+        color: @term-text-mid;
+    }
+
+    // Reply count — absolute pill top-right on phone
+    .DiscussionListItem-count {
+        background: @term-raised !important;
+        color: @term-text-mid !important;
+        border: 1px solid @term-border;
+        border-radius: @border-radius !important;
+        font-family: 'DM Mono', monospace;
+        font-size: 11px !important;
+        padding: 2px 7px !important;
+
+        // Unread — green accent
+        .unread & {
+            background: @term-green-dimmer !important;
+            color: @term-green !important;
+            border-color: @term-green-dim !important;
+            font-weight: 500 !important;
+        }
+    }
+}
+
+// ── Toolbar buttons — Phone ───────────────────────────────────
+@media @phone {
+    .IndexPage-toolbar {
+        background: @term-surface;
+        border-bottom: 1px solid @term-border;
+        padding: 6px 12px;
+
+        .Button {
+            background: transparent;
+            border: 1px solid @term-border;
+            border-radius: @border-radius;
+            color: @term-text-mid;
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+            padding: 2px 8px;
+            box-shadow: none;
+
+            &:hover {
+                border-color: @term-green-dim;
+                color: @term-text;
+                background: transparent;
+                box-shadow: none;
+            }
+        }
+
+        .Dropdown-toggle.Button {
+            border-color: @term-green-dim;
+            color: @term-text;
+        }
+    }
+}
+
+// ── Phone: info row stacked ───────────────────────────────────
+// Stack tag on its own line, reply info on the next line
+
+@media @phone {
+    .DiscussionListItem-info {
+        > li {
+            display: block;
+            margin-bottom: 2px;
+
+            &:last-child { margin-bottom: 0; }
+        }
+    }
+}
+
+// ── Load More button ──────────────────────────────────────────
+@media @tablet-up {
+    .DiscussionList-loadMore {
+        padding: 16px;
+        text-align: center;
+
+        .Button {
+            background: transparent;
+            border: 1px solid @term-border;
+            border-radius: @border-radius;
+            color: @term-text-mid;
+            font-family: 'DM Mono', monospace;
+            font-size: 12px;
+            box-shadow: none;
+            padding: 6px 20px;
+
+            &:hover {
+                border-color: @term-green-dim;
+                color: @term-text;
+                background: transparent;
+                box-shadow: none;
+            }
+        }
+    }
+}
+
+@media @phone {
+    .DiscussionList-loadMore {
+        padding: 16px;
+        text-align: center;
+
+        .Button {
+            background: transparent;
+            border: 1px solid @term-border;
+            border-radius: @border-radius;
+            color: @term-text-mid;
+            font-family: 'DM Mono', monospace;
+            font-size: 12px;
+            box-shadow: none;
+            width: 100%;
+
+            &:hover {
+                border-color: @term-green-dim;
+                color: @term-text;
+                background: transparent;
+                box-shadow: none;
+            }
+        }
+    }
+}
