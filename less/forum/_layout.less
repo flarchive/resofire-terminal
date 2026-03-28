@@ -1,0 +1,145 @@
+// ── Layout — Desktop only ─────────────────────────────────────
+
+@media @tablet-up {
+    body {
+        background: @term-bg;
+        font-family: 'DM Mono', 'Courier New', monospace;
+    }
+
+    .App {
+        background: @term-bg;
+    }
+
+    // Content area border
+    .App-content {
+        background: @term-bg;
+        border-top: none;
+    }
+
+    // Container max-width — give the layout breathing room
+    .container {
+        max-width: 1100px;
+    }
+
+    // Page background
+    .Page {
+        background: @term-bg;
+    }
+}
+
+// ── Container + sidebar widths — desktop only ────────────────
+// The container caps at 1100px (@screen-desktop-hd).
+// Widen it so the discussion list has genuine room to breathe.
+// Then widen the sidebar from 190px → 240px and tighten the gap.
+
+@media @desktop-up {
+    .container {
+        width: 1400px !important;
+        max-width: 96vw;
+    }
+
+    .IndexPage {
+        --sidebar-width: 240px;
+        --gap: 24px;
+    }
+
+    // sideNav explicit width — overrides core's hardcoded 190px
+    .IndexPage .sideNav,
+    .IndexPage .sideNav > ul {
+        width: 240px;
+    }
+}
+
+// ── Mobile drawer — Phone only ────────────────────────────────
+
+@media @phone {
+    // Drawer panel itself
+    .App-drawer {
+        background: @term-surface !important;
+        border-right: 1px solid @term-border;
+        box-shadow: none !important;
+    }
+
+    // Forum title inside the drawer
+    .App-drawer .Header-title,
+    .App-drawer .Header-title a {
+        font-family: 'DM Mono', monospace;
+        font-size: 15px;
+        color: @term-green !important;
+        text-align: center;
+        letter-spacing: .06em;
+
+        &::before { content: '> '; color: @term-green-dim; }
+    }
+
+    // Header controls inside drawer — search, notifications, session
+    // rendered as full-width vertical stack
+    .App-drawer .Header-controls {
+        > li {
+            padding: 0 12px;
+        }
+
+        .Button {
+            font-family: 'DM Mono', monospace;
+            font-size: 13px;
+            color: @term-text-mid;
+            background: transparent;
+            border: none;
+            box-shadow: none;
+            justify-content: flex-start;
+
+            &:hover {
+                color: @term-text;
+                background: transparent;
+            }
+
+            .Button-icon { color: inherit; }
+            .Button-label { color: inherit; }
+        }
+
+        // Search input full-width
+        .FormControl {
+            background: @term-raised;
+            border: 1px solid @term-border;
+            color: @term-text;
+            font-family: 'DM Mono', monospace;
+            font-size: 13px;
+            border-radius: @border-radius;
+
+            &::placeholder { color: @term-text-dim; }
+            &:focus {
+                border-color: @term-green-dim;
+                box-shadow: none;
+            }
+        }
+
+        // Session dropdown full-width
+        .SessionDropdown .Button--flat {
+            color: @term-green;
+            font-family: 'DM Mono', monospace;
+            font-size: 13px;
+            justify-content: flex-start;
+            background: transparent;
+            box-shadow: none;
+
+            .Avatar { border-radius: @border-radius; }
+        }
+
+        // Notifications and flags
+        .NotificationsDropdown .Button--flat,
+        .FlagsDropdown .Button--flat {
+            color: @term-text-mid;
+            font-family: 'DM Mono', monospace;
+            background: transparent;
+            box-shadow: none;
+            justify-content: flex-start;
+
+            &:hover { color: @term-text; }
+        }
+    }
+
+    // Drawer backdrop
+    .drawer-backdrop {
+        background: rgba(0,0,0,.8);
+    }
+}

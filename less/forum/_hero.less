@@ -1,0 +1,36 @@
+// ── Hero (WelcomeHero) — Desktop only ────────────────────────
+
+@media @tablet-up {
+    .Hero {
+        background: @term-surface;
+        border-bottom: 1px solid @term-border;
+
+        .container { padding-top: 24px; padding-bottom: 20px; }
+    }
+
+    .Hero-title {
+        font-family: 'DM Mono', monospace;
+        font-size: 15px;
+        font-weight: 400;
+        color: @term-green;
+        letter-spacing: .04em;
+
+        &::before { content: '## '; color: @term-green-dim; }
+    }
+
+    .Hero-subtitle {
+        font-family: 'DM Mono', monospace;
+        font-size: 12px;
+        color: @term-text-mid;
+        letter-spacing: .02em;
+        margin-top: 6px;
+
+        &::before { content: '// '; color: @term-text-dim; }
+    }
+
+    .Hero-close {
+        color: @term-text-dim;
+        opacity: 1;
+        &:hover { color: @term-text; }
+    }
+}
