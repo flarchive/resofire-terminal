@@ -1,0 +1,480 @@
+// ── Everforest Light Mode ─────────────────────────────────────
+// Fires when user selects Light or Auto (with light OS preference).
+// All dark @term-* values are overridden. Layout rules unchanged.
+
+[data-theme^=light] {
+
+    // ── Colour palette ────────────────────────────────────────
+    --ef-bg:           #fdf6e3;   // main background (parchment)
+    --ef-surface:      #f0ead6;   // header, hero, sidebar, toolbar
+    --ef-raised:       #efe9d5;   // tag tiles, dropdowns, raised elements
+    --ef-border:       #d8cdb0;   // primary border
+    --ef-border-mid:   #c8bda0;   // slightly stronger border
+
+    --ef-text:         #5c6a72;   // body text
+    --ef-text-mid:     #939f91;   // secondary/muted text
+    --ef-text-dim:     #b5ada0;   // dim hints
+    --ef-text-dimmer:  #cdc5b8;   // barely visible
+
+    --ef-green:        #8da101;   // primary accent (olive green)
+    --ef-green-dim:    #a0b060;   // dimmer olive
+    --ef-green-dimmer: #dde8b8;   // very light olive tint
+
+    // ── Global background ─────────────────────────────────────
+    body,
+    .App,
+    .App-content { background: #fdf6e3 !important; }
+
+    // ── App header ────────────────────────────────────────────
+    .App-header {
+        background: #f0ead6 !important;
+        border-bottom: 1px solid #d8cdb0 !important;
+        box-shadow: none !important;
+    }
+
+    .Header-title,
+    .Header-title a {
+        color: #8da101 !important;
+        &::before { color: #a0b060; }
+    }
+
+    .Search-input .FormControl {
+        background: #efe9d5 !important;
+        border-color: #d8cdb0 !important;
+        color: #5c6a72 !important;
+        &::placeholder { color: #b5ada0 !important; }
+        &:focus { border-color: #a0b060 !important; }
+    }
+
+    .Header-controls .Button--flat,
+    .Header-controls .Button--link,
+    .Header-controls .Button--user {
+        color: #939f91 !important;
+        &:hover { color: #5c6a72 !important; border-color: #a0b060 !important; }
+    }
+
+    .HeaderDropdownBubble {
+        background: #8da101 !important;
+        color: #fdf6e3 !important;
+    }
+
+    // ── Hero ──────────────────────────────────────────────────
+    .Hero {
+        background: #f0ead6 !important;
+        border-bottom: 1px solid #d8cdb0 !important;
+    }
+
+    .Hero-title {
+        color: #8da101 !important;
+        &::before { color: #a0b060 !important; }
+    }
+
+    .Hero-subtitle {
+        color: #939f91 !important;
+        &::before { color: #b5ada0 !important; }
+    }
+
+    .Hero-close { color: #b5ada0 !important; }
+
+    // ── Discussion hero ───────────────────────────────────────
+    .DiscussionHero.Hero { background: #f0ead6 !important; }
+
+    .DiscussionHero .DiscussionHero-title {
+        color: #8da101 !important;
+        &::before { color: #a0b060 !important; }
+    }
+
+    // ── Sidebar ───────────────────────────────────────────────
+    .IndexPage-nav.sideNav {
+        background: #f0ead6 !important;
+        border-right: 1px solid #d8cdb0 !important;
+    }
+
+    .sideNav .Dropdown--select .Dropdown-menu > li > a {
+        color: #939f91 !important;
+        &::before { color: #b5ada0 !important; }
+        .Button-icon { color: #b5ada0 !important; }
+        .Button-label { color: inherit !important; }
+        &:hover {
+            color: #5c6a72 !important;
+            &::before { color: #a0b060 !important; }
+        }
+    }
+
+    .sideNav .Dropdown--select .Dropdown-menu > li.active > a {
+        color: #8da101 !important;
+        &::before { color: #a0b060 !important; }
+        .Button-icon { color: #a0b060 !important; }
+    }
+
+    // Start a Discussion button
+    .IndexPage-nav .App-primaryControl .Button--primary,
+    .IndexPage-nav .IndexPage-newDiscussion {
+        background: #8da101 !important;
+        color: #ffffff !important;
+        border-color: #8da101 !important;
+        &:hover { background: #7a8e00 !important; }
+        .Button-icon { color: #ffffff !important; }
+    }
+
+    // Tag tiles
+    .term-tag-tile {
+        background: #efe9d5 !important;
+        border-color: #d8cdb0 !important;
+        &:hover { border-color: var(--tile-color, #8da101) !important; }
+    }
+
+    .term-tag-tile-count { color: #b5ada0 !important; }
+
+    // ── Discussion list ───────────────────────────────────────
+    .DiscussionList { background: #fdf6e3 !important; }
+
+    .DiscussionListItem {
+        background: #fdf6e3 !important;
+        border-bottom: 1px solid #e8e0cc !important;
+        &:hover { background: #f7f2e5 !important; }
+    }
+
+    .DiscussionListItem-title { color: #5c6a72 !important; }
+
+    .DiscussionListItem-content.unread .DiscussionListItem-title {
+        color: #475258 !important;
+    }
+
+    .DiscussionListItem-info { color: #939f91 !important; }
+
+    .DiscussionListItem-stats-item { color: #939f91 !important; }
+
+    .DiscussionListItem-content.unread .DiscussionListItem-stats-item {
+        color: #8da101 !important;
+    }
+
+    // Reply count pill on phone
+    .DiscussionListItem-count {
+        background: #efe9d5 !important;
+        color: #939f91 !important;
+        border: 1px solid #d8cdb0 !important;
+
+        .unread & {
+            background: #dde8b8 !important;
+            color: #5a6e10 !important;
+            border-color: #c0d068 !important;
+        }
+    }
+
+    // Toolbar
+    .IndexPage-toolbar {
+        background: #f0ead6 !important;
+        border-bottom: 1px solid #d8cdb0 !important;
+
+        .Button {
+            color: #939f91 !important;
+            border-color: #d8cdb0 !important;
+            &:hover { color: #5c6a72 !important; border-color: #a0b060 !important; }
+        }
+
+        .Dropdown-toggle.Button {
+            color: #5c6a72 !important;
+            border-color: #a0b060 !important;
+        }
+    }
+
+    // ── Posts ─────────────────────────────────────────────────
+    .Post { background: #fdf6e3 !important; }
+
+    .PostUser-name,
+    .PostUser-name a { color: #8da101 !important; }
+
+    .Post-body {
+        color: #5c6a72 !important;
+
+        a {
+            color: #3a94c5 !important;
+            border-bottom-color: #d8cdb0 !important;
+            &:hover { color: #1a6a9a !important; }
+        }
+
+        blockquote {
+            background: #f0ead6 !important;
+            border-left-color: #a0b060 !important;
+            color: #939f91 !important;
+        }
+
+        code {
+            background: #efe9d5 !important;
+            color: #5a6e10 !important;
+        }
+
+        pre {
+            background: #efe9d5 !important;
+            code { color: #5a6e10 !important; }
+        }
+    }
+
+    .PostStream-item::after { background: #e8e0cc !important; }
+
+    .ReplyPlaceholder {
+        border-color: #d8cdb0 !important;
+        color: #b5ada0 !important;
+        &:hover { border-color: #a0b060 !important; }
+    }
+
+    .Scrubber-bar { background: #8da101 !important; }
+    .Scrubber-before,
+    .Scrubber-after { border-left-color: #d8cdb0 !important; }
+
+    // ── Composer ──────────────────────────────────────────────
+    .Composer {
+        background: #f0ead6 !important;
+        border-top-color: #8da101 !important;
+    }
+
+    .Composer-handle::after { color: #b5ada0 !important; }
+
+    .ComposerBody-header {
+        border-bottom-color: #d8cdb0 !important;
+        h3::before { color: #a0b060 !important; }
+    }
+
+    .DiscussionComposer-title {
+        color: #5c6a72 !important;
+        &::placeholder { color: #b5ada0 !important; }
+    }
+
+    .TextEditor .TextEditor-editor {
+        color: #5c6a72 !important;
+        caret-color: #8da101 !important;
+    }
+
+    .TextEditor-controls {
+        border-top-color: #d8cdb0 !important;
+
+        .Button {
+            color: #939f91 !important;
+            border-color: #d8cdb0 !important;
+            &:hover { color: #5c6a72 !important; border-color: #a0b060 !important; }
+        }
+
+        .App-primaryControl .Button--primary {
+            background: #8da101 !important;
+            color: #ffffff !important;
+            border-color: #8da101 !important;
+            &:hover { background: #7a8e00 !important; }
+            .Button-icon { color: #ffffff !important; }
+        }
+    }
+
+    // ── Modals ────────────────────────────────────────────────
+    .Modal { border-color: #8da101 !important; }
+
+    .Modal-content { background: #f0ead6 !important; }
+
+    .Modal-header {
+        background: #efe9d5 !important;
+        border-bottom-color: #d8cdb0 !important;
+        h3 { color: #8da101 !important; }
+    }
+
+    .Modal-body {
+        background: #f0ead6 !important;
+        color: #5c6a72 !important;
+
+        .FormControl {
+            background: #fdf6e3 !important;
+            border-color: #d8cdb0 !important;
+            color: #5c6a72 !important;
+            &:focus { border-color: #a0b060 !important; }
+            &::placeholder { color: #b5ada0 !important; }
+        }
+
+        label { color: #939f91 !important; }
+        .helpText { color: #b5ada0 !important; }
+
+        .Form-group label::before { color: #b5ada0 !important; }
+    }
+
+    .Modal-footer {
+        background: #efe9d5 !important;
+        border-top-color: #d8cdb0 !important;
+
+        .Button--primary {
+            background: #8da101 !important;
+            color: #ffffff !important;
+            border-color: #8da101 !important;
+            &:hover { background: #7a8e00 !important; }
+        }
+
+        a, .Button--link, .Button--text {
+            color: #939f91 !important;
+            &:hover { color: #5c6a72 !important; }
+        }
+    }
+
+    // ── Dropdowns ─────────────────────────────────────────────
+    .Dropdown-menu {
+        background: #efe9d5 !important;
+        border-color: #d8cdb0 !important;
+
+        > li > a,
+        > li > button:not(.DetailedDropdownItem) {
+            color: #939f91 !important;
+            &::before { color: #b5ada0 !important; }
+            &:hover {
+                color: #8da101 !important;
+                background: transparent !important;
+                &::before { color: #a0b060 !important; }
+            }
+        }
+
+        > li > .DetailedDropdownItem {
+            color: #939f91 !important;
+            .Button-icon { color: #939f91 !important; }
+            .DetailedDropdownItem-description { color: #b5ada0 !important; }
+            &:hover { color: #8da101 !important; background: transparent !important; }
+        }
+
+        .Dropdown-header { color: #b5ada0 !important; }
+        .Dropdown-separator { background: #d8cdb0 !important; }
+    }
+
+    .HeaderList {
+        background: #efe9d5 !important;
+        border-color: #d8cdb0 !important;
+    }
+
+    .HeaderList-header,
+    .HeaderList-footer {
+        background: #f0ead6 !important;
+        border-color: #d8cdb0 !important;
+        h4 { color: #939f91 !important; }
+        .Button--link { color: #b5ada0 !important; }
+    }
+
+    // ── Alerts ────────────────────────────────────────────────
+    .Alert {
+        background: #efe9d5 !important;
+        border-color: #d8cdb0 !important;
+        color: #5c6a72 !important;
+    }
+
+    .Alert--success { border-color: #a0b060 !important; color: #5a6e10 !important; }
+    .Alert--error   { border-color: #e8a0a0 !important; color: #a03030 !important; }
+
+    // ── Mobile top bar ────────────────────────────────────────
+    .App-navigation {
+        background: #f0ead6 !important;
+        border-bottom-color: #d8cdb0 !important;
+    }
+
+    .App-backControl > .Button .Button-icon::before { color: #8da101 !important; }
+
+    .App-titleControl,
+    .App-titleControl > .Button,
+    .App-titleControl--text {
+        color: #8da101 !important;
+        &::before { color: #a0b060 !important; }
+    }
+
+    .App-navigation .App-primaryControl > .Button .Button-icon { color: #8da101 !important; }
+
+    // ── Mobile drawer ─────────────────────────────────────────
+    .App-drawer {
+        background: #f0ead6 !important;
+        border-right-color: #d8cdb0 !important;
+    }
+
+    .App-drawer .Header-title,
+    .App-drawer .Header-title a {
+        color: #8da101 !important;
+        &::before { color: #a0b060 !important; }
+    }
+
+    .App-drawer .Header-controls .Button {
+        color: #939f91 !important;
+        &:hover { color: #5c6a72 !important; }
+    }
+
+    .App-drawer .FormControl {
+        background: #fdf6e3 !important;
+        border-color: #d8cdb0 !important;
+        color: #5c6a72 !important;
+        &::placeholder { color: #b5ada0 !important; }
+    }
+
+    // ── Discussion page sidebar buttons ───────────────────────
+    .DiscussionPage-nav .ButtonGroup > .Button:not(.Dropdown-toggle) {
+        background: #efe9d5 !important;
+        border-color: #d8cdb0 !important;
+        color: #939f91 !important;
+        &:hover { border-color: #a0b060 !important; color: #5c6a72 !important; }
+    }
+
+    .DiscussionPage-nav .ButtonGroup > .Dropdown-toggle {
+        background: #efe9d5 !important;
+        border-color: #d8cdb0 !important;
+        color: #b5ada0 !important;
+        &:hover { border-color: #a0b060 !important; color: #5c6a72 !important; }
+    }
+
+    .DiscussionPage-nav .App-primaryControl .Button--primary {
+        background: #8da101 !important;
+        color: #ffffff !important;
+        border-color: #8da101 !important;
+        &:hover { background: #7a8e00 !important; }
+        .Button-icon { color: #ffffff !important; }
+    }
+
+    .DiscussionPage-nav .App-primaryControl .Dropdown-toggle {
+        background: #8da101 !important;
+        border-color: #7a8e00 !important;
+        color: #ffffff !important;
+        &:hover { background: #7a8e00 !important; }
+    }
+
+    // ── Search modal ──────────────────────────────────────────
+    .SearchModal {
+        .SearchModal-input.FormControl {
+            background: #fdf6e3 !important;
+            border-color: #d8cdb0 !important;
+            color: #5c6a72 !important;
+            &::placeholder { color: #b5ada0 !important; }
+            &:focus { border-color: #a0b060 !important; }
+        }
+
+        .Tabs-nav .Button {
+            color: #939f91 !important;
+            &.active, &[aria-pressed="true"] {
+                color: #8da101 !important;
+                border-bottom-color: #8da101 !important;
+            }
+        }
+
+        .Modal-body.SearchModal-body { background: #f0ead6 !important; }
+
+        .DiscussionSearchResult .DiscussionListItem {
+            background: #fdf6e3 !important;
+            border-bottom-color: #e8e0cc !important;
+            .DiscussionListItem-title { color: #5c6a72 !important; }
+            &.active, &:hover { background: #efe9d5 !important; }
+        }
+
+        .UserSearchResult {
+            border-bottom-color: #e8e0cc !important;
+            .username { color: #5c6a72 !important; }
+            &:hover > a { background: #efe9d5 !important; }
+        }
+    }
+
+    // ── Tag hero fix ──────────────────────────────────────────
+    // In light mode the contrast-color for light tags will be dark —
+    // so the white bg issue doesn't occur. But keep dark surface override
+    // to match our warm palette instead of pure white.
+    .DiscussionHero .TagsLabel .TagLabel.colored,
+    .DiscussionHero .TagsLabel .TagLabel--colored {
+        background-color: #efe9d5 !important;
+    }
+
+    // ── Scrubber text ─────────────────────────────────────────
+    .Scrubber { color: #5c6a72 !important; }
+    .PostStreamScrubber .Scrubber-description { color: #939f91 !important; }
+}
