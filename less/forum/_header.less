@@ -1,0 +1,99 @@
+// ── Header — Desktop only ─────────────────────────────────────
+
+@media @tablet-up {
+    .App-header {
+        background: @term-surface !important;
+        border-bottom: 1px solid @term-border !important;
+        box-shadow: none !important;
+        padding: 8px 16px;
+    }
+
+    .Header-title,
+    .Header-title a {
+        font-family: 'DM Mono', monospace;
+        font-size: 14px;
+        font-weight: 500;
+        color: @term-green !important;
+        letter-spacing: .06em;
+        text-decoration: none;
+
+        &::before { content: '> '; color: @term-green-dim; }
+        &:hover { color: @term-green !important; text-decoration: none; }
+    }
+
+    // Search — .Search-input is on the Input wrapper, .FormControl on the inner input
+    .Search-input .FormControl {
+        background: @term-raised;
+        border: 1px solid @term-border;
+        border-radius: @border-radius;
+        color: @term-text;
+        font-family: 'DM Mono', monospace;
+        font-size: 12px;
+        height: 30px;
+        padding: 5px 12px 5px 26px;
+
+        &:focus {
+            border-color: @term-green-dim;
+            background: @term-raised;
+            color: @term-text;
+            box-shadow: none;
+        }
+
+        &::placeholder { color: @term-text-dim; }
+    }
+
+    // All header flat/link buttons — notifications, flags, locale, session
+    .Header-controls .Button--flat,
+    .Header-controls .Button--link,
+    .Header-controls .Button--user {
+        background: transparent;
+        border: 1px solid transparent;
+        border-radius: @border-radius;
+        color: @term-text-mid;
+        font-family: 'DM Mono', monospace;
+        font-size: 12px;
+        padding: 4px 8px;
+        box-shadow: none;
+
+        &:hover {
+            border-color: @term-green-dim;
+            color: @term-green;
+            background: transparent;
+            box-shadow: none;
+        }
+
+        .Button-label { color: inherit; }
+        .Button-icon { color: inherit; }
+    }
+
+    // Unread bubble — .Bubble.HeaderDropdownBubble
+    .HeaderDropdownBubble {
+        background: @term-green;
+        color: @term-bg;
+        font-family: 'DM Mono', monospace;
+        font-size: 10px;
+    }
+
+    // Start a Discussion button — default position in sidebar (App-primaryControl)
+    // Core wraps it in .App-primaryControl li and renders Button--primary
+    .IndexPage-nav .App-primaryControl .Button--primary,
+    .IndexPage-nav .IndexPage-newDiscussion {
+        background: @term-green !important;
+        border: none !important;
+        border-radius: @border-radius !important;
+        color: @term-bg !important;
+        font-family: 'DM Mono', monospace !important;
+        font-size: 12px !important;
+        font-weight: 500 !important;
+        width: 100%;
+        box-shadow: none !important;
+        letter-spacing: .03em;
+
+        &:hover {
+            background: mix(white, @term-green, 15%) !important;
+            box-shadow: none !important;
+        }
+
+        .Button-icon { color: @term-bg !important; }
+    }
+}
