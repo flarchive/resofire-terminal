@@ -1,0 +1,162 @@
+// ── Typography ────────────────────────────────────────────────
+
+// ── Tag hero fix — all breakpoints ───────────────────────────
+// Tags extension sets --contrast-color (white) as bg for light-coloured tags
+// in the DiscussionHero. Force dark bg + coloured text on all screen sizes.
+.DiscussionHero .TagsLabel .TagLabel.colored,
+.DiscussionHero .TagsLabel .TagLabel--colored {
+    background-color: @term-raised !important;
+    --tag-color: var(--tag-bg) !important;
+}
+
+.DiscussionHero .TagsLabel .TagLabel.colored .TagLabel-text,
+.DiscussionHero .TagsLabel .TagLabel--colored .TagLabel-text {
+    color: var(--tag-bg) !important;
+}
+
+// ── Desktop + tablet ─────────────────────────────────────────
+@media @tablet-up {
+    .Button,
+    .FormControl,
+    .Alert { font-family: 'DM Mono', monospace; }
+
+    .DiscussionHero .DiscussionHero-title {
+        font-family: 'DM Mono', monospace;
+        font-size: 18px;
+        font-weight: 400;
+        color: @term-green;
+        letter-spacing: .04em;
+
+        &::before { content: '# '; color: @term-green-dim; }
+    }
+
+    .DiscussionHero.Hero {
+        background: @term-surface;
+        border-bottom: 1px solid @term-border;
+    }
+
+    .TagLabel {
+        border-radius: 1px;
+        font-family: 'DM Mono', monospace;
+        font-size: 10px;
+        letter-spacing: .02em;
+    }
+
+    .Alert {
+        background: @term-raised;
+        border: 1px solid @term-border;
+        border-radius: @border-radius;
+        color: @term-text;
+        font-size: 12px;
+        box-shadow: none;
+    }
+
+    .Alert--success { border-color: @term-green-dim; color: @term-green-dim; }
+    .Alert--error   { border-color: #5A1A1A; color: #FF6B6B; }
+    .AlertManager   { background: transparent; }
+}
+
+// ── Phone ─────────────────────────────────────────────────────
+@media @phone {
+    .DiscussionHero .DiscussionHero-title {
+        font-family: 'DM Mono', monospace;
+        font-size: 15px;
+        font-weight: 400;
+        color: @term-green;
+        letter-spacing: .04em;
+
+        &::before { content: '# '; color: @term-green-dim; }
+    }
+
+    .DiscussionHero.Hero {
+        background: @term-surface;
+        border-bottom: 1px solid @term-border;
+    }
+
+    .TagLabel {
+        border-radius: 1px;
+        font-family: 'DM Mono', monospace;
+        font-size: 10px;
+        letter-spacing: .02em;
+    }
+}
+
+// ── Discussion page sidebar buttons — all breakpoints ─────────
+// Reply (SplitDropdown/ButtonGroup) and Follow (ButtonGroup) buttons
+// in .DiscussionPage-nav need terminal styling.
+
+.DiscussionPage-nav {
+    .ButtonGroup {
+        border-radius: @border-radius;
+        gap: 1px;
+
+        // Main button (Reply / Follow label)
+        > .Button:not(.Dropdown-toggle) {
+            background: @term-raised !important;
+            border: 1px solid @term-border !important;
+            border-radius: @border-radius 0 0 @border-radius !important;
+            color: @term-text-mid !important;
+            font-family: 'DM Mono', monospace !important;
+            font-size: 12px !important;
+            box-shadow: none !important;
+
+            &:hover {
+                background: @term-surface !important;
+                border-color: @term-green-dim !important;
+                color: @term-text !important;
+                box-shadow: none !important;
+            }
+
+            .Button-icon { color: inherit !important; }
+            .Button-label { color: inherit !important; }
+        }
+
+        // Caret / dropdown toggle
+        > .Dropdown-toggle {
+            background: @term-raised !important;
+            border: 1px solid @term-border !important;
+            border-left: 1px solid @term-border-mid !important;
+            border-radius: 0 @border-radius @border-radius 0 !important;
+            color: @term-text-dim !important;
+            box-shadow: none !important;
+
+            &:hover {
+                background: @term-surface !important;
+                border-color: @term-green-dim !important;
+                color: @term-text !important;
+                box-shadow: none !important;
+            }
+        }
+    }
+
+    // Reply button — Button--primary variant
+    .App-primaryControl .Button--primary {
+        background: @term-green !important;
+        border-color: @term-green !important;
+        color: @term-bg !important;
+        font-family: 'DM Mono', monospace !important;
+        font-size: 12px !important;
+        box-shadow: none !important;
+
+        &:hover {
+            background: mix(white, @term-green, 15%) !important;
+            box-shadow: none !important;
+        }
+
+        .Button-icon { color: @term-bg !important; }
+    }
+
+    // Caret on the reply SplitDropdown
+    .App-primaryControl .Dropdown-toggle {
+        background: @term-green !important;
+        border-color: @term-green !important;
+        border-left-color: @term-green-dim !important;
+        color: @term-bg !important;
+        box-shadow: none !important;
+
+        &:hover {
+            background: mix(white, @term-green, 15%) !important;
+            box-shadow: none !important;
+        }
+    }
+}
