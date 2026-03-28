@@ -1,0 +1,28 @@
+// ── Layout — Desktop only ─────────────────────────────────────
+
+@media @tablet-up {
+    body {
+        background: @term-bg;
+        font-family: 'DM Mono', 'Courier New', monospace;
+    }
+
+    .App {
+        background: @term-bg;
+    }
+
+    // Content area border
+    .App-content {
+        background: @term-bg;
+        border-top: none;
+    }
+
+    // Container max-width — give the layout breathing room
+    .container {
+        max-width: 1100px;
+    }
+
+    // Page background
+    .Page {
+        background: @term-bg;
+    }
+}
