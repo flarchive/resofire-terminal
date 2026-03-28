@@ -1,0 +1,124 @@
+// ── Discussion List — Desktop only ───────────────────────────
+
+@media @tablet-up {
+    .IndexPage-toolbar {
+        background: @term-surface;
+        border-bottom: 1px solid @term-border;
+        padding: 7px 16px;
+
+        .Button {
+            background: transparent;
+            border: 1px solid @term-border;
+            border-radius: @border-radius;
+            color: @term-text-mid;
+            font-family: 'DM Mono', monospace;
+            font-size: 10px;
+            padding: 2px 8px;
+            box-shadow: none;
+
+            &:hover {
+                border-color: @term-green-dim;
+                color: @term-green;
+                background: transparent;
+                box-shadow: none;
+            }
+        }
+
+        // Active sort — the Dropdown toggle gets highlighted
+        .Dropdown-toggle.Button {
+            border-color: @term-green-dim;
+            color: @term-green;
+        }
+    }
+
+    .DiscussionList {
+        background: @term-bg;
+    }
+
+    .DiscussionListItem {
+        background: @term-bg;
+        border: none;
+        border-bottom: 1px solid @term-border;
+        border-radius: 0;
+        margin: 0;
+        padding: 0;
+        position: relative;
+        overflow: hidden;
+
+        &::before {
+            content: '';
+            position: absolute;
+            left: 0; top: 0; bottom: 0;
+            width: 2px;
+            background: var(--aurora-tag-color, @term-green-dim);
+        }
+
+        &:hover {
+            background: @term-surface;
+
+            .DiscussionListItem-title { color: @term-green; }
+        }
+    }
+
+    .DiscussionListItem-content {
+        padding: 10px 16px 10px 18px;
+        gap: 12px;
+    }
+
+    // Avatar inside .DiscussionListItem-author-avatar (Link or span)
+    .DiscussionListItem-author-avatar .Avatar {
+        border-radius: @border-radius;
+        background: @term-surface;
+        border: 1px solid @term-border;
+        width: 28px;
+        height: 28px;
+    }
+
+    .DiscussionListItem-title {
+        font-family: 'DM Mono', monospace;
+        font-size: 12px;
+        font-weight: 400;
+        color: @term-text;
+        margin-bottom: 3px;
+        line-height: 1.4;
+    }
+
+    .DiscussionListItem-info {
+        font-family: 'DM Mono', monospace;
+        font-size: 10px;
+        color: @term-text-dim;
+    }
+
+    // TagLabel inside the info row
+    .DiscussionListItem-info .TagLabel {
+        border-radius: 1px;
+        font-size: 9px;
+        font-weight: 500;
+        padding: 1px 5px;
+        letter-spacing: .03em;
+    }
+
+    // .unread is on .DiscussionListItem-content, not .DiscussionListItem
+    .DiscussionListItem-content.unread {
+        .DiscussionListItem-title {
+            color: #4A6A4A;
+            font-weight: 500;
+        }
+    }
+
+    .DiscussionListItem-stats-item {
+        font-family: 'DM Mono', monospace;
+        font-size: 10px;
+        color: @term-text-dim;
+    }
+
+    // Unread stats — .unread is on .DiscussionListItem-content
+    .DiscussionListItem-content.unread .DiscussionListItem-stats-item {
+        color: @term-green;
+    }
+
+    .DiscussionListItem-controls .Button {
+        color: @term-text-dim;
+        &:hover { color: @term-green; }
+    }
+}

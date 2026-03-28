@@ -1,0 +1,63 @@
+// ── Typography — Desktop only ─────────────────────────────────
+
+@media @tablet-up {
+    // Global monospace font for UI elements
+    .Button,
+    .FormControl,
+    .Alert {
+        font-family: 'DM Mono', monospace;
+    }
+
+    // Discussion page title — DiscussionHero renders h1.DiscussionHero-title
+    .DiscussionHero .DiscussionHero-title {
+        font-family: 'DM Mono', monospace;
+        font-size: 18px;
+        font-weight: 400;
+        color: @term-green;
+        letter-spacing: .04em;
+
+        &::before {
+            content: '# ';
+            color: @term-green-dim;
+        }
+    }
+
+    // DiscussionHero uses .Hero as root — style its background
+    .DiscussionHero.Hero {
+        background: @term-surface;
+        border-bottom: 1px solid @term-border;
+    }
+
+    // TagLabel in hero or info rows
+    .TagLabel {
+        border-radius: 1px;
+        font-family: 'DM Mono', monospace;
+        font-size: 9px;
+        letter-spacing: .03em;
+    }
+
+    // Alert banners
+    .Alert {
+        background: @term-raised;
+        border: 1px solid @term-border;
+        border-radius: @border-radius;
+        color: @term-text;
+        font-size: 11px;
+        box-shadow: none;
+    }
+
+    .Alert--success {
+        border-color: @term-green-dim;
+        color: @term-green-dim;
+    }
+
+    .Alert--error {
+        border-color: #3A0A0A;
+        color: #FF5F57;
+    }
+
+    // AlertManager — the container for stacked alerts
+    .AlertManager {
+        background: transparent;
+    }
+}

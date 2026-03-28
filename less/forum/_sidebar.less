@@ -1,0 +1,182 @@
+// ── Sidebar — Desktop only ────────────────────────────────────
+
+@media @desktop-up {
+    .IndexPage-nav.sideNav {
+        background: @term-surface;
+        border-right: 1px solid @term-border;
+    }
+
+    // Core targets .sideNav .Dropdown--select .Dropdown-menu > li > a
+    // SelectDropdown adds class .Dropdown--select on the Dropdown wrapper
+    // On @expand-side-nav (tablet-up) the .Dropdown--expanded() mixin is applied
+    // making items visible as a flat list
+    .sideNav .Dropdown--select .Dropdown-menu > li > a {
+        font-family: 'DM Mono', monospace;
+        font-size: 11px;
+        color: @term-text-mid;
+        padding: 6px 16px;
+        border-radius: 0;
+        letter-spacing: .02em;
+        gap: 0;
+
+        // Prefix every nav item as a shell command
+        &::before {
+            content: '$ ';
+            color: @term-text-dimmer;
+            font-family: 'DM Mono', monospace;
+        }
+
+        // Hide the FontAwesome icon — the $ prefix replaces it
+        .Button-icon { display: none; }
+
+        &:hover {
+            background: none;
+            color: @term-green;
+            &::before { color: @term-green-dim; }
+        }
+    }
+
+    // Active nav item
+    .sideNav .Dropdown--select .Dropdown-menu > li.active > a {
+        background: none;
+        color: @term-green;
+        font-weight: 500;
+        &::before { color: @term-green-dim; }
+    }
+
+    // ── User block ───────────────────────────────────────────
+    .aurora-sidebar-user {
+        margin: 12px 12px 8px;
+        background: @term-raised;
+        border: 1px solid @term-border;
+        border-radius: @border-radius;
+    }
+
+    .aurora-sidebar-actions {
+        display: flex;
+        align-items: center;
+        padding: 5px 8px;
+        border-bottom: 1px solid @term-border;
+        gap: 2px;
+        border-radius: @border-radius @border-radius 0 0;
+
+        // HeaderDropdown toggles use Button Button--flat
+        .Button--flat {
+            background: transparent;
+            border: 1px solid transparent;
+            border-radius: @border-radius;
+            padding: 3px 7px;
+            color: @term-text-dim;
+            font-family: 'DM Mono', monospace;
+            font-size: 10px;
+            box-shadow: none;
+
+            &:hover {
+                border-color: @term-green-dim;
+                color: @term-green;
+                background: transparent;
+                box-shadow: none;
+            }
+        }
+    }
+
+    // SessionDropdown toggle has class Button--user Button--flat
+    // Target .Button--flat inside .SessionDropdown inside .aurora-sidebar-user
+    .aurora-sidebar-user .SessionDropdown .Button--flat {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 10px;
+        text-align: left;
+        color: @term-green-dim;
+        font-family: 'DM Mono', monospace;
+        font-size: 11px;
+        background: transparent;
+        border: none;
+        border-radius: 0 0 @border-radius @border-radius;
+        box-shadow: none;
+        justify-content: flex-start;
+
+        &:hover {
+            background: @term-green-dimmer;
+            color: @term-green;
+            box-shadow: none;
+        }
+
+        .Avatar {
+            border-radius: @border-radius;
+            width: 20px;
+            height: 20px;
+            background: @term-green-dimmer;
+            flex-shrink: 0;
+        }
+    }
+
+    // ── Tag tiles ────────────────────────────────────────────
+    .aurora-tag-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4px;
+        padding: 8px 12px 12px;
+    }
+
+    .aurora-tag-tile {
+        border-radius: @border-radius;
+        padding: 8px 8px 6px;
+        cursor: pointer;
+        text-decoration: none;
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+        position: relative;
+        overflow: hidden;
+        // Dark tinted background — use a pseudo overlay instead of CSS filter
+        // so text children are unaffected
+        background: @term-raised;
+        transition: border-color .15s;
+        border: 1px solid @term-border;
+
+        // Colour bar at top using pseudo-element with the tag colour
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 2px;
+            background: var(--tile-color, @term-green);
+        }
+
+        &:hover {
+            border-color: var(--tile-color, @term-green);
+            text-decoration: none;
+        }
+
+        &.active {
+            border-color: var(--tile-color, @term-green);
+        }
+    }
+
+    .aurora-tag-tile-icon {
+        position: absolute;
+        top: 8px;
+        right: 7px;
+        font-size: 12px;
+        opacity: .2;
+        color: var(--tile-color, @term-green);
+    }
+
+    .aurora-tag-tile-name {
+        font-family: 'DM Mono', monospace;
+        font-size: 10px;
+        font-weight: 500;
+        line-height: 1.2;
+        color: var(--tile-color, @term-green);
+        margin-top: 4px;
+    }
+
+    .aurora-tag-tile-count {
+        font-family: 'DM Mono', monospace;
+        font-size: 9px;
+        color: @term-text-dim;
+    }
+}

@@ -1,0 +1,151 @@
+// ── Composer — Desktop only ───────────────────────────────────
+
+@media @tablet-up {
+    .Composer {
+        background: @term-surface;
+        border-radius: 0;
+        box-shadow: none;
+        // Green top border signals active composer
+        border-top: 1px solid @term-green !important;
+
+        &.active, &.fullScreen {
+            background: @term-surface;
+            box-shadow: none !important;
+        }
+
+        &.active:not(.fullScreen) {
+            box-shadow: none !important;
+        }
+    }
+
+    // Drag handle — core has .Composer-handle with height:15px
+    .Composer-handle {
+        cursor: ns-resize;
+        position: relative;
+
+        &::after {
+            content: '── drag to resize ──';
+            display: block;
+            text-align: center;
+            font-family: 'DM Mono', monospace;
+            font-size: 9px;
+            color: @term-text-dimmer;
+            letter-spacing: .06em;
+            padding: 2px 0;
+        }
+    }
+
+    .Composer-content {
+        padding: 12px 20px 14px;
+    }
+
+    // Title input row — DiscussionComposer renders .ComposerBody-header > li > h3 > input.DiscussionComposer-title
+    .ComposerBody-header {
+        border-bottom: 1px solid @term-border;
+        margin-bottom: 8px;
+        padding-bottom: 8px;
+
+        h3 {
+            color: @term-text-mid;
+            font-family: 'DM Mono', monospace;
+
+            &::before {
+                content: 'title: ';
+                font-size: 10px;
+                color: @term-green-dim;
+                font-family: 'DM Mono', monospace;
+            }
+        }
+
+        // The actual input has class .FormControl.DiscussionComposer-title
+        .DiscussionComposer-title {
+            color: @term-green;
+            font-family: 'DM Mono', monospace;
+            font-size: 13px;
+            background: transparent;
+            border: none;
+            box-shadow: none;
+
+            &::placeholder { color: @term-text-dim; }
+            &:focus {
+                background: transparent;
+                border-color: transparent;
+                box-shadow: none;
+            }
+        }
+    }
+
+    // TextEditor wrapper — .TextEditor .TextEditor-editor is the textarea
+    .TextEditor .TextEditor-editor {
+        background: transparent;
+        color: @term-text;
+        font-family: 'DM Mono', monospace;
+        font-size: 12px;
+        line-height: 1.8;
+        min-height: 80px;
+        caret-color: @term-green;
+        border: none;
+        box-shadow: none;
+
+        &:focus { box-shadow: none; }
+    }
+
+    // Controls row — .TextEditor-controls.Composer-footer
+    .TextEditor-controls {
+        border-top: 1px solid @term-border;
+        padding-top: 8px;
+        margin-top: 4px;
+
+        .Button {
+            background: transparent;
+            border: 1px solid @term-border;
+            border-radius: @border-radius;
+            color: @term-text-dim;
+            font-family: 'DM Mono', monospace;
+            font-size: 10px;
+            padding: 2px 7px;
+            box-shadow: none;
+
+            &:hover {
+                border-color: @term-green-dim;
+                color: @term-green;
+                background: transparent;
+                box-shadow: none;
+            }
+        }
+
+        // Submit button li has itemClassName="App-primaryControl"
+        // so the <li> class is "item App-primaryControl"
+        // Target the Button--primary inside it
+        .App-primaryControl .Button--primary {
+            background: @term-green !important;
+            color: @term-bg !important;
+            border-color: @term-green !important;
+            font-family: 'DM Mono', monospace !important;
+            font-weight: 500 !important;
+            padding: 3px 14px !important;
+            box-shadow: none !important;
+
+            &:hover {
+                background: mix(white, @term-green, 15%) !important;
+                box-shadow: none !important;
+            }
+        }
+    }
+
+    // Minimize/fullscreen/close controls
+    .Composer-controls .Button {
+        background: transparent;
+        border: 1px solid transparent;
+        color: @term-text-dim;
+        font-size: 11px;
+        padding: 2px 6px;
+
+        &:hover {
+            border-color: @term-border;
+            color: @term-green;
+            background: transparent;
+            box-shadow: none;
+        }
+    }
+}

@@ -1,0 +1,116 @@
+// ── Posts — Desktop only ──────────────────────────────────────
+
+@media @tablet-up {
+    .Post {
+        border-radius: 0;
+        background: @term-bg;
+    }
+
+    .Post-header,
+    .Post-header a,
+    .Post-header .Button--text.Button--link {
+        font-family: 'DM Mono', monospace;
+        color: @term-green-dim;
+    }
+
+    // PostUser-name a is the author link
+    .PostUser-name,
+    .PostUser-name a {
+        color: @term-green !important;
+        font-family: 'DM Mono', monospace;
+        font-size: 12px;
+    }
+
+    .Post-body {
+        font-family: 'DM Mono', monospace;
+        font-size: 13px;
+        color: @term-text;
+        line-height: 1.8;
+
+        a {
+            color: @term-green-dim;
+            border-bottom: 1px solid @term-green-dimmer;
+            text-decoration: none;
+
+            &:hover {
+                color: @term-green;
+                border-color: @term-green-dim;
+                text-decoration: none;
+            }
+        }
+
+        blockquote {
+            background: @term-surface;
+            border: none;
+            border-left: 2px solid @term-green-dim;
+            border-radius: 0;
+            color: @term-text-mid;
+            padding: 8px 14px;
+        }
+
+        code {
+            background: @term-raised;
+            border-radius: @border-radius;
+            color: @term-green;
+            font-family: 'DM Mono', monospace;
+        }
+
+        pre {
+            background: @term-raised;
+            border-radius: @border-radius;
+
+            code {
+                background: transparent;
+                color: @term-green;
+            }
+        }
+    }
+
+    // Divider line between posts
+    .PostStream-item::after {
+        background: @term-border !important;
+    }
+
+    // Reply placeholder
+    .ReplyPlaceholder {
+        border-color: @term-border;
+        border-radius: @border-radius;
+        background: transparent;
+        color: @term-text-dim;
+        font-family: 'DM Mono', monospace;
+        font-size: 12px;
+
+        &:hover { border-color: @term-green-dim; }
+    }
+
+    // Post footer/action buttons
+    .Post-footer,
+    .Post-actions {
+        &, a, .Button--text.Button--link {
+            color: @term-text-dim;
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+        }
+        a:hover { color: @term-green; }
+    }
+
+    // Scrubber — the thin scrollbar on the discussion page
+    .Scrubber-before,
+    .Scrubber-after {
+        border-left-color: @term-border;
+    }
+
+    // .Scrubber-bar is the draggable handle indicator
+    .Scrubber-bar {
+        background: @term-green;
+        border-radius: 0;
+    }
+
+    .Scrubber-handle {
+        cursor: move;
+    }
+
+    .Scrubber-unread {
+        border-left-color: @term-green-dim;
+    }
+}

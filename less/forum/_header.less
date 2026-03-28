@@ -1,0 +1,159 @@
+// ── Header — Desktop only ─────────────────────────────────────
+
+@media @tablet-up {
+    .App-header {
+        background: @term-surface !important;
+        border-bottom: 1px solid @term-border !important;
+        box-shadow: none !important;
+        padding: 8px 16px;
+    }
+
+    .Header-title,
+    .Header-title a {
+        font-family: 'DM Mono', monospace;
+        font-size: 14px;
+        font-weight: 500;
+        color: @term-green !important;
+        letter-spacing: .08em;
+        text-decoration: none;
+
+        &::before {
+            content: '> ';
+            color: @term-green-dim;
+        }
+        &:hover { color: @term-green !important; text-decoration: none; }
+    }
+
+    // Search — AbstractGlobalSearch renders .Search > .Input.Search-input
+    // The inner <input> gets class .FormControl
+    .Search-input .FormControl {
+        background: @term-raised;
+        border: 1px solid @term-border;
+        border-radius: @border-radius;
+        color: @term-green;
+        font-family: 'DM Mono', monospace;
+        font-size: 11px;
+        height: 30px;
+        padding: 5px 12px 5px 28px;
+
+        &:focus {
+            border-color: @term-green-dim;
+            background: @term-raised;
+            color: @term-green;
+            box-shadow: none;
+        }
+        &::placeholder { color: @term-text-dim; }
+    }
+
+    // "/" prefix sits inside .Input wrapper via ::before on the Input component
+    .Search-input.Input::before {
+        content: '/ ';
+        position: absolute;
+        left: 10px;
+        color: @term-green-dim;
+        font-size: 11px;
+        font-family: 'DM Mono', monospace;
+        z-index: 1;
+        line-height: 30px;
+        pointer-events: none;
+    }
+
+    // Flat header buttons (locale, etc.)
+    .Header-controls .Button--flat,
+    .Header-controls .Button--link {
+        background: transparent;
+        border: 1px solid transparent;
+        border-radius: @border-radius;
+        color: @term-text-mid;
+        font-family: 'DM Mono', monospace;
+        font-size: 11px;
+        padding: 4px 8px;
+
+        &:hover {
+            border-color: @term-green-dim;
+            color: @term-green;
+            background: transparent;
+            box-shadow: none;
+        }
+    }
+
+    // Notifications & Flags dropdown toggle buttons
+    // HeaderDropdown uses buttonClassName="Button Button--flat"
+    .NotificationsDropdown .Button--flat,
+    .FlagsDropdown .Button--flat {
+        background: transparent;
+        border: 1px solid transparent;
+        border-radius: @border-radius;
+        color: @term-text-mid;
+        font-family: 'DM Mono', monospace;
+        font-size: 11px;
+        padding: 4px 8px;
+
+        &:hover {
+            border-color: @term-green-dim;
+            color: @term-green;
+            background: transparent;
+            box-shadow: none;
+        }
+    }
+
+    // Unread count bubble — class is .Bubble.HeaderDropdownBubble
+    .HeaderDropdownBubble {
+        background: @term-green;
+        color: @term-bg;
+        font-family: 'DM Mono', monospace;
+    }
+
+    // SessionDropdown toggle — buttonClassName="Button Button--user Button--flat"
+    .SessionDropdown .Button--flat {
+        background: @term-raised;
+        border: 1px solid @term-border;
+        border-radius: @border-radius;
+        color: @term-green;
+        font-family: 'DM Mono', monospace;
+        font-size: 11px;
+        padding: 4px 10px;
+
+        &:hover {
+            border-color: @term-green-dim;
+            box-shadow: none;
+            background: @term-raised;
+        }
+
+        .Avatar {
+            border-radius: @border-radius;
+            width: 18px;
+            height: 18px;
+            background: @term-green-dimmer;
+        }
+    }
+
+    // New Discussion pill — Button--primary with class aurora-newDiscussion
+    .aurora-newDiscussion.Button--primary {
+        background: @term-green !important;
+        border: none !important;
+        border-radius: @border-radius !important;
+        color: @term-bg !important;
+        font-family: 'DM Mono', monospace !important;
+        font-size: 11px !important;
+        font-weight: 500 !important;
+        padding: 5px 14px !important;
+        letter-spacing: .04em;
+        box-shadow: none !important;
+
+        &:hover {
+            background: mix(white, @term-green, 15%) !important;
+            box-shadow: none !important;
+        }
+
+        .Button-icon { display: none; }
+        .Button-label::before { content: '+ '; }
+    }
+
+    .Header-secondary {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        margin-left: auto;
+    }
+}

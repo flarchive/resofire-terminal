@@ -1,0 +1,31 @@
+{
+    "name": "resofire/terminal",
+    "description": "Terminal — a monospace dark theme for Flarum 2.x",
+    "type": "flarum-extension",
+    "version": "0.1.0",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "resofire"
+        }
+    ],
+    "require": {
+        "flarum/core": "^2.0"
+    },
+    "extra": {
+        "flarum-extension": {
+            "title": "Terminal",
+            "category": "theme",
+            "icon": {
+                "name": "fas fa-terminal",
+                "backgroundColor": "#0A0A0A",
+                "color": "#39FF14"
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Resofire\\Terminal\\": "src/"
+        }
+    }
+}
