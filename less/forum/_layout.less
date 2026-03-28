@@ -1,0 +1,45 @@
+// ── Layout — Desktop only ─────────────────────────────────────
+
+@media @tablet-up {
+    body {
+        background: @term-bg;
+        font-family: 'DM Mono', 'Courier New', monospace;
+    }
+
+    .App {
+        background: @term-bg;
+    }
+
+    // Content area border
+    .App-content {
+        background: @term-bg;
+        border-top: none;
+    }
+
+    // Container max-width — give the layout breathing room
+    .container {
+        max-width: 1100px;
+    }
+
+    // Page background
+    .Page {
+        background: @term-bg;
+    }
+}
+
+// ── Sidebar + content widths — desktop only ───────────────────
+// Widen the sidebar from 190px to 260px, tighten the gap,
+// but only on the IndexPage (discussion list), not globally.
+
+@media @desktop-up {
+    .IndexPage {
+        --sidebar-width: 260px;
+        --gap: 30px;
+    }
+
+    // sideNav and its ul also have an explicit 190px — override both
+    .IndexPage .sideNav,
+    .IndexPage .sideNav > ul {
+        width: 260px;
+    }
+}
