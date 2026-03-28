@@ -1,0 +1,195 @@
+// ── High Contrast Modes ───────────────────────────────────────
+// These blocks fire ONLY for exact data-theme=dark-hc or light-hc.
+// They layer on top of the base dark/light styles — nothing else is touched.
+
+// ── Dark High Contrast ────────────────────────────────────────
+// Pushes text from #CCC toward #FFF, muted from #888 toward #AAA,
+// borders slightly brighter. Neon green stays the same.
+
+[data-theme=dark-hc] {
+
+    // Body text — near white
+    .DiscussionListItem-title,
+    .DiscussionListItem-content.unread .DiscussionListItem-title,
+    .Post-body,
+    .PostUser-name,
+    .PostUser-name a,
+    .Button-label,
+    .Header-title,
+    .Header-title a,
+    .Hero-title,
+    .DiscussionHero .DiscussionHero-title { color: #ffffff !important; }
+
+    // Muted text — bumped up
+    .DiscussionListItem-info,
+    .DiscussionListItem-stats-item,
+    .Post-header,
+    .Hero-subtitle,
+    .sideNav .Dropdown--select .Dropdown-menu > li > a,
+    .Header-controls .Button--flat,
+    .Header-controls .Button--link { color: #aaaaaa !important; }
+
+    // Borders — slightly more visible
+    .App-header,
+    .Hero,
+    .DiscussionHero.Hero,
+    .IndexPage-nav.sideNav { border-color: #333333 !important; }
+
+    .DiscussionListItem { border-bottom-color: #2a2a2a !important; }
+
+    .DiscussionListItem-title { color: #ffffff !important; }
+
+    // Sidebar nav $ prefix and icons — brighter dim
+    .sideNav .Dropdown--select .Dropdown-menu > li > a {
+        &::before { color: #777777 !important; }
+        .Button-icon { color: #777777 !important; }
+    }
+
+    .sideNav .Dropdown--select .Dropdown-menu > li.active > a {
+        color: #39FF14 !important;
+        &::before { color: #1E6B1E !important; }
+    }
+
+    // Tag tiles — slightly brighter border
+    .term-tag-tile { border-color: #2a2a2a !important; }
+
+    // Dropdowns
+    .Dropdown-menu {
+        border-color: #333333 !important;
+
+        > li > a,
+        > li > button:not(.DetailedDropdownItem) { color: #aaaaaa !important; }
+    }
+
+    // Post body text
+    .Post-body { color: #ffffff !important; }
+
+    // Composer
+    .TextEditor .TextEditor-editor { color: #ffffff !important; }
+    .DiscussionComposer-title { color: #ffffff !important; }
+
+    // Modal
+    .Modal-body { color: #ffffff !important; }
+
+    // Unread count badge stays the same green
+}
+
+// ── Light High Contrast ───────────────────────────────────────
+// Pushes body text to near-black #2d3a2d, muted text to #5c6a72,
+// borders darker, olive accent deepened to #6a7800.
+
+[data-theme=light-hc] {
+
+    // Main backgrounds — very slightly cooler/deeper
+    body,
+    .App,
+    .App-content,
+    .Page,
+    .Page-container,
+    .Page-main,
+    .Page-content,
+    .IndexPage,
+    .DiscussionPage { background: #f8f0d8 !important; }
+
+    .App-header,
+    .Hero,
+    .DiscussionHero.Hero,
+    .IndexPage-nav.sideNav,
+    .IndexPage-toolbar,
+    .App-drawer { background: #ede4cc !important; border-color: #b8a888 !important; }
+
+    .term-tag-tile { background: #e4d8bc !important; border-color: #b8a888 !important; }
+
+    // Body text — near-black forest
+    .DiscussionListItem-title { color: #2d3a2d !important; }
+    .DiscussionListItem-content.unread .DiscussionListItem-title { color: #1a2a1a !important; }
+    .Post-body { color: #2d3a2d !important; }
+    .TextEditor .TextEditor-editor { color: #2d3a2d !important; }
+    .DiscussionComposer-title { color: #2d3a2d !important; }
+    .Modal-body { color: #2d3a2d !important; }
+
+    // Muted text — bumped down to base text colour
+    .DiscussionListItem-info,
+    .DiscussionListItem-stats-item,
+    .Hero-subtitle,
+    .Post-header,
+    .Header-controls .Button--flat,
+    .Header-controls .Button--link { color: #5c6a72 !important; }
+
+    // Accent — deeper olive
+    .Header-title,
+    .Header-title a,
+    .Hero-title,
+    .DiscussionHero .DiscussionHero-title,
+    .PostUser-name,
+    .PostUser-name a { color: #6a7800 !important; }
+
+    .sideNav .Dropdown--select .Dropdown-menu > li.active > a { color: #6a7800 !important; }
+    .sideNav .Dropdown--select .Dropdown-menu > li > a { color: #5c6a72 !important; }
+
+    // Borders — darker
+    .DiscussionListItem { border-bottom-color: #c8b890 !important; }
+
+    // Start a Discussion button — deeper olive
+    .IndexPage-nav .App-primaryControl .Button--primary,
+    .IndexPage-nav .IndexPage-newDiscussion {
+        background: #6a7800 !important;
+        border-color: #6a7800 !important;
+        &:hover { background: #5a6800 !important; }
+    }
+
+    // Unread count badge — stronger olive
+    .DiscussionListItem-content.unread .DiscussionListItem-stats-item { color: #6a7800 !important; }
+
+    .DiscussionListItem-content.unread .DiscussionListItem-count,
+    .DiscussionListItem-count .unread & {
+        background: #c8de90 !important;
+        color: #3a5000 !important;
+        border-color: #a0b840 !important;
+    }
+
+    // Dropdowns
+    .Dropdown-menu {
+        background: #e4d8bc !important;
+        border-color: #b8a888 !important;
+
+        > li > a,
+        > li > button:not(.DetailedDropdownItem) { color: #5c6a72 !important; }
+    }
+
+    // Search modal input
+    .SearchModal .SearchModal-input.FormControl {
+        background: #f8f0d8 !important;
+        border-color: #b8a888 !important;
+        color: #2d3a2d !important;
+    }
+
+    // Composer
+    .Composer { border-top-color: #6a7800 !important; }
+    .TextEditor-controls .App-primaryControl .Button--primary {
+        background: #6a7800 !important;
+        border-color: #6a7800 !important;
+    }
+
+    // Modal
+    .Modal { border-color: #6a7800 !important; }
+    .Modal-footer .Button--primary {
+        background: #6a7800 !important;
+        border-color: #6a7800 !important;
+    }
+
+    // Scrubber
+    .Scrubber-bar { background: #6a7800 !important; }
+
+    // Discussion page buttons
+    .DiscussionPage-nav .App-primaryControl .Button--primary {
+        background: #6a7800 !important;
+        border-color: #6a7800 !important;
+        &:hover { background: #5a6800 !important; }
+    }
+
+    .DiscussionPage-nav .App-primaryControl .Dropdown-toggle {
+        background: #6a7800 !important;
+        border-color: #5a6800 !important;
+    }
+}
