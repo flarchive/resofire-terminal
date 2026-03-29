@@ -1,0 +1,179 @@
+// ── Header — Desktop only ─────────────────────────────────────
+
+@media @tablet-up {
+    // Hide default nav back/pin buttons — they show as >> and cover the logo
+    #header-navigation,
+    .Header-navigation,
+    .Navigation-back,
+    .Navigation-pin { display: none !important; }
+
+    .App-header {
+        background: @term-surface !important;
+        border-bottom: 1px solid @term-border !important;
+        box-shadow: none !important;
+        padding: 8px 16px;
+    }
+
+    .Header-title,
+    .Header-title a {
+        font-family: 'DM Mono', monospace;
+        font-size: 14px;
+        font-weight: 500;
+        color: @term-green !important;
+        letter-spacing: .06em;
+        text-decoration: none;
+
+        &::before { content: '> '; color: @term-green-dim; }
+        &:hover { color: @term-green !important; text-decoration: none; }
+    }
+
+    // Search — .Search-input is on the Input wrapper, .FormControl on the inner input
+    .Search-input .FormControl {
+        background: @term-raised;
+        border: 1px solid @term-border;
+        border-radius: @border-radius;
+        color: @term-text;
+        font-family: 'DM Mono', monospace;
+        font-size: 12px;
+        height: 30px;
+        padding: 5px 12px 5px 26px;
+
+        &:focus {
+            border-color: @term-green-dim;
+            background: @term-raised;
+            color: @term-text;
+            box-shadow: none;
+        }
+
+        &::placeholder { color: @term-text-dim; }
+    }
+
+    // All header flat/link buttons — notifications, flags, locale, session
+    .Header-controls .Button--flat,
+    .Header-controls .Button--link,
+    .Header-controls .Button--user {
+        background: transparent;
+        border: 1px solid transparent;
+        border-radius: @border-radius;
+        color: @term-text-mid;
+        font-family: 'DM Mono', monospace;
+        font-size: 12px;
+        padding: 4px 8px;
+        box-shadow: none;
+
+        &:hover {
+            border-color: @term-green-dim;
+            color: @term-green;
+            background: transparent;
+            box-shadow: none;
+        }
+
+        .Button-label { color: inherit; }
+        .Button-icon { color: inherit; }
+    }
+
+    // Unread bubble — .Bubble.HeaderDropdownBubble
+    .HeaderDropdownBubble {
+        background: @term-green;
+        color: @term-bg;
+        font-family: 'DM Mono', monospace;
+        font-size: 10px;
+    }
+}
+
+// Start a Discussion button — desktop sidebar only (not mobile drawer)
+@media @desktop-up {
+    .IndexPage-nav .App-primaryControl .Button--primary,
+    .IndexPage-nav .IndexPage-newDiscussion {
+        background: @term-green !important;
+        border: none !important;
+        border-radius: @border-radius !important;
+        color: @term-bg !important;
+        font-family: 'DM Mono', monospace !important;
+        font-size: 16px !important;
+        font-weight: 500 !important;
+        width: 100%;
+        white-space: nowrap;
+        overflow: visible;
+        box-shadow: none !important;
+        letter-spacing: .01em;
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+
+        &:hover {
+            background: mix(white, @term-green, 15%) !important;
+            box-shadow: none !important;
+        }
+
+        .Button-icon { color: @term-bg !important; font-size: 11px !important; }
+    }
+}
+
+// ── Mobile top bar — Phone only ───────────────────────────────
+
+@media @phone {
+    // Top bar strip — 46px, dark surface, green bottom border
+    .App-navigation {
+        background: @term-surface !important;
+        border-bottom: 1px solid @term-border !important;
+        box-shadow: none !important;
+    }
+
+    // Left slot — hamburger / back button
+    // Style as >_ terminal prompt
+    .App-backControl > .Button {
+        color: @term-green !important;
+        font-family: 'DM Mono', monospace;
+
+        // Replace the icon with >_ via ::before, hide default icon
+        .Button-icon {
+            font-size: 0 !important; // hide FontAwesome icon visually
+            position: relative;
+
+            &::before {
+                content: '>_';
+                font-size: 16px;
+                font-family: 'DM Mono', monospace;
+                color: @term-green;
+                display: block;
+            }
+        }
+    }
+
+    // Centre slot — title / nav dropdown
+    // Prefix with "> " in green
+    .App-titleControl {
+        color: @term-green !important;
+        font-family: 'DM Mono', monospace;
+
+        > .Button,
+        &--text {
+            color: @term-green !important;
+            font-family: 'DM Mono', monospace;
+            font-size: 14px;
+            letter-spacing: .04em;
+        }
+
+        // The "> " prefix on the title text
+        &--text::before,
+        > .Button::before {
+            content: '> ';
+            color: @term-green-dim;
+            font-family: 'DM Mono', monospace;
+        }
+    }
+
+    // Right slot — Start a Discussion icon button (NOT inside composer)
+    // Only target the top-bar primaryControl, not the composer submit button
+    .App-navigation .App-primaryControl > .Button,
+    .App-content > .App-primaryControl > .Button {
+        color: @term-green !important;
+        background: transparent !important;
+        box-shadow: none !important;
+
+        .Button-icon {
+            font-size: 18px !important;
+            color: @term-green !important;
+        }
+    }
+}
